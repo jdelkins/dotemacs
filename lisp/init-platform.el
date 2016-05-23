@@ -14,8 +14,8 @@
               (define-key global-map (kbd "<s-return>") 'toggle-frame-fullscreen))
 
             (when (memq window-system '(x))
-              (add-to-list 'default-frame-alist '(font . "Office Code Pro"))
-              (set-face-attribute 'default nil :font "Office Code Pro")
+              (add-to-list 'default-frame-alist '(font . "Pragmata Pro"))
+              (set-face-attribute 'default nil :font "Pragmata Pro")
               (sanityinc/set-frame-font-size 16))
 
             (when (fboundp 'powerline-reset)
