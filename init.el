@@ -225,7 +225,6 @@ condition where the bell visualization never clears.")
   (define-key markdown-mode-map (kbd "C-c 6") 'markdown-insert-header-atx-6))
 
 (use-package php-extras :ensure t :defer t)
-(use-package sublime-themes :ensure t)
 (use-package sunshine
   :ensure t
   :commands sunshine-forecast
@@ -330,6 +329,8 @@ condition where the bell visualization never clears.")
 
 (use-package sublime-themes :ensure t)
 (use-package gruvbox-theme :ensure t)
+(use-package monokai-theme :ensure t)
+(use-package solarized-theme :ensure t)
 (use-package color-theme-sanityinc-tomorrow :ensure t)
 
 ;;; Helpers for GNUPG, which I use for encrypting/decrypting secrets.
