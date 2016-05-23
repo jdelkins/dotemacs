@@ -40,9 +40,6 @@ condition where the bell visualization never clears.")
               (setq visible-bell t))
 
             (when (memq window-system '(w32))
-              (add-to-list 'default-frame-alist '(font . "PragmataPro Mono"))
-              (set-face-attribute 'default nil :font "PragmataPro Mono")
-              (sanityinc/set-frame-font-size 16)
               (setq visible-bell t))
 
             (when (fboundp 'powerline-reset)

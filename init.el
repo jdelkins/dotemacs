@@ -502,20 +502,6 @@ is the buffer location at which the function was found."
                           (list `(,fn-name . ,fn-location)))))))
       res)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-hide-emphasis-markers t)
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
- '(package-selected-packages
-   (quote
-    (nlinum-relative company-shell pandoc-mode virtualenvwrapper counsel helm-swoop groovy-mode octopress zenburn-theme yaml-mode which-key wgrep-ag web-mode w3m use-package twittering-mode sunshine sublime-themes rainbow-mode powerline-evil php-extras org-bullets mmm-mode markdown-mode magit highlight-symbol helm-projectile gtags fullframe flycheck-package exec-path-from-shell evil-surround evil-leader evil-jumper evil-indent-textobject emmet-mode elpy dictionary color-theme-sanityinc-tomorrow bpr avy auto-complete ag)))
- '(safe-local-variable-values (quote ((css-indent-offset . 2) (no-byte-compile t)))))
-
 ;; handle tmux's xterm-keys
 ;; put the following line in your ~/.tmux.conf:
 ;;   setw -g xterm-keys on
@@ -617,6 +603,10 @@ is the buffer location at which the function was found."
   (setq ns-use-srgb-colorspace nil))
 
 (load-theme 'gruvbox)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(if (file-readable-p custom-file)
+    (load custom-file))
 
 (provide 'init)
 ;;; init.el ends here
