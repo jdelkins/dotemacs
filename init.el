@@ -99,6 +99,7 @@ condition where the bell visualization never clears.")
 (require 'init-php)
 (require 'init-powerline)
 (require 'init-flycheck)
+(require 'init-term)
 
 (add-to-list 'load-path (expand-file-name "fence-edit" user-emacs-directory))
 (require 'fence-edit)
