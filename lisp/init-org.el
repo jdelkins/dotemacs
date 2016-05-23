@@ -153,6 +153,10 @@ TAG is chosen interactively from the global tags completion table."
                 nil)))
     (air--org-swap-tags new)))
 
+(defun air-org-outlook-open (id)
+   "Open the Outlook item identified by ID.  ID should be an Outlook GUID."
+   (w32-shell-execute "open" (concat "outlook:" id)))
+
 ;; ~ is %AppData% in w32, and %AppData%/Dropbox is the place where dropbox is installed,
 ;; not where the Dropbox directory is.
 (defun dropbox-directory ()
@@ -200,6 +204,8 @@ TAG is chosen interactively from the global tags completion table."
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-insert-heading-respect-content t)
   (set-face-attribute 'org-upcoming-deadline nil :foreground "gold1")
+
+  (org-add-link-type "outlook" 'air-org-outlook-open)
 
   (evil-leader/set-key-for-mode 'org-mode
     "$"  'org-archive-subtree
