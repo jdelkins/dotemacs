@@ -18,6 +18,11 @@
               (set-face-attribute 'default nil :font "Pragmata Pro")
               (sanityinc/set-frame-font-size 16))
 
+            (when (memq window-system '(w32))
+              (add-to-list 'default-frame-alist '(font . "PragmataPro Mono"))
+              (set-face-attribute 'default nil :font "PragmataPro Mono")
+              (sanityinc/set-frame-font-size 16))
+
             (when (fboundp 'powerline-reset)
               (powerline-reset))))
 

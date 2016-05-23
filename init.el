@@ -121,10 +121,12 @@ condition where the bell visualization never clears.")
   :config
   (setq octopress-blog-root (expand-file-name "~/Blog")))
 
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (exec-path-from-shell-initialize))
+;; Doesn't work on windows
+(if (memq window-system '(mac ns x))
+    (use-package exec-path-from-shell
+      :ensure t
+      :config
+      (exec-path-from-shell-initialize)))
 
 (use-package pandoc-mode
   :ensure t)
