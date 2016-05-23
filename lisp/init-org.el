@@ -83,17 +83,17 @@ FORCE-HEADING is non-nil."
 (defun air-pop-to-org-todo (split)
   "Visit my main TODO list, in the current window or a SPLIT."
   (interactive "P")
-  (air--pop-to-file "~/Dropbox/org/todo.org" split))
+  (air--pop-to-file (concat (dropbox-directory) "org/todo.org") split))
 
 (defun air-pop-to-org-notes (split)
   "Visit my main notes file, in the current window or a SPLIT."
   (interactive "P")
-  (air--pop-to-file "~/Dropbox/org/notes.org" split))
+  (air--pop-to-file (concat (dropbox-directory) "org/notes.org") split))
 
 (defun air-pop-to-org-vault (split)
   "Visit my encrypted vault file, in the current window or a SPLIT."
   (interactive "P")
-  (air--pop-to-file "~/Dropbox/org/vault.gpg" split))
+  (air--pop-to-file (concat (dropbox-directory) "org/vault.gpg") split))
 
 (defun air-pop-to-org-agenda (split)
   "Visit the org agenda, in the current window or a SPLIT."
@@ -153,6 +153,13 @@ TAG is chosen interactively from the global tags completion table."
                 nil)))
     (air--org-swap-tags new)))
 
+;; ~ is %AppData% in w32, and %AppData%/Dropbox is the place where dropbox is installed,
+;; not where the Dropbox directory is.
+(defun dropbox-directory ()
+  "Return path to dropbox directory."
+  (if (memq window-system '(w32))
+      (file-name-as-directory (concat (file-name-as-directory (getenv "USERPROFILE")) "Dropbox"))
+    (file-name-as-directory "~/Dropbox")))
 
 ;;; Code:
 (use-package org
@@ -171,7 +178,7 @@ TAG is chosen interactively from the global tags completion table."
          ("C-c f i" . air-org-goto-custom-id))
   :config
   (setq org-agenda-text-search-extra-files '(agenda-archives))
-  (setq org-agenda-files '("~/Dropbox/org/"))
+  (setq org-agenda-files (list (concat (dropbox-directory) "org")))
   (setq org-todo-keywords
         '((sequence "☛ TODO" "○ IN-PROGRESS" "⚑ WAITING" "|" "✓ DONE" "✗ CANCELED")))
   (setq org-blank-before-new-entry '((heading . t)
@@ -184,8 +191,8 @@ TAG is chosen interactively from the global tags completion table."
            (file+headline "notes.org" "Work")
            "* %?\n%u\n\n"
            :jump-to-captured t)))
-  (setq org-default-notes-file "~/Dropbox/org/todo.org")
-  (setq org-directory "~/Dropbox/org")
+  (setq org-default-notes-file (concat (dropbox-directory) "org/todo.org"))
+  (setq org-directory (concat (dropbox-directory) "org"))
   (setq org-enforce-todo-dependencies t)
   (setq org-log-done (quote time))
   (setq org-log-redeadline (quote time))
