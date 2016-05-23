@@ -11,7 +11,7 @@
 (setq package-enable-at-startup nil)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
-(if (file-readable-p "/usr/local/bin")
+(if (file-directory-p "/usr/local/bin")
     (add-to-list 'exec-path "/usr/local/bin"))
 (require 'init-utils)
 (require 'init-elpa)
