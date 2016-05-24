@@ -18,7 +18,7 @@
     "D"  'open-current-line-in-codebase-search
     "f"  'helm-imenu            ;; Jump to function in buffer
     "g"  'magit-status
-    "h"  'fontify-and-browse    ;; HTML-ize the buffer and browse the result
+    "ht" 'fontify-and-browse    ;; HTML-ize the buffer and browse the result
     "l"  'whitespace-mode       ;; Show invisible characters
     "nn" 'narrow-and-set-normal ;; Narrow to region and enter normal mode
     "nw" 'widen
