@@ -338,17 +338,16 @@
   (setq nlinum-relative-redisplay-delay 0)
   (add-hook 'prog-mode-hook #'nlinum-relative-mode))
 
-;; git-gutter-fringe doesn't work in terminal mode
-(if (window-system)
-    (use-package git-gutter-fringe
-      :ensure t
-      :config
-      (global-git-gutter-mode t)
-      (evil-leader/set-key "hs" 'git-gutter:stage-hunk)
-      (evil-leader/set-key "hu" 'git-gutter:revert-hunk)
-      (evil-define-key 'normal global-map (kbd "]c") 'git-gutter:next-hunk)
-      (evil-define-key 'normal global-map (kbd "[c") 'git-gutter:previous-hunk)))
-  
+(use-package git-gutter-fringe
+  ;; git-gutter-fringe doesn't work in terminal mode
+  :if (display-graphic-p)
+  :ensure t
+  :config
+  (global-git-gutter-mode t)
+  (evil-leader/set-key "hp" 'git-gutter:popup-hunk)
+  (evil-define-key 'normal global-map (kbd "]c") 'git-gutter:next-hunk)
+  (evil-define-key 'normal global-map (kbd "[c") 'git-gutter:previous-hunk))
+
 ;;; Python mode:
 (use-package virtualenvwrapper
   :ensure t
