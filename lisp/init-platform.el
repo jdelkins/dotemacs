@@ -42,7 +42,7 @@ condition where the bell visualization never clears.")
             (when (memq window-system '(w32))
               (set-face-attribute 'default nil
                                   :font "PragmataPro Mono"
-                                  :height 120)
+                                  :height 110)
               (setq visible-bell t))
 
             (when (fboundp 'powerline-reset)

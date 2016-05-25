@@ -100,11 +100,11 @@
   (setq octopress-blog-root (expand-file-name "~/Blog")))
 
 ;; Doesn't work on windows
-(if (memq window-system '(mac ns x))
-    (use-package exec-path-from-shell
-      :ensure t
-      :config
-      (exec-path-from-shell-initialize)))
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
 
 (use-package pandoc-mode
   :ensure t)
@@ -144,7 +144,6 @@
               (wgrep-ag-setup)
               (define-key ag-mode-map (kbd "n") 'evil-search-next)
               (define-key ag-mode-map (kbd "N") 'evil-search-previous)))
-  ;(setq ag-executable "/usr/local/bin/ag")
   (setq ag-highlight-search t)
   (setq ag-reuse-buffers t)
   (setq ag-reuse-window t))
@@ -217,7 +216,7 @@
       (buffer-string)))
   (setq sunshine-appid (get-string-from-file
                         (expand-file-name "sunshine-appid" user-emacs-directory)))
-  (setq sunshine-location "Brookline, MA")
+  (setq sunshine-location "Houston, TX")
   (setq sunshine-show-icons t))
 
 (use-package twittering-mode
@@ -311,7 +310,6 @@
 (use-package sublime-themes :ensure t)
 (use-package gruvbox-theme :ensure t)
 (use-package monokai-theme :ensure t)
-(use-package solarized-theme :ensure t)
 (use-package color-theme-sanityinc-tomorrow :ensure t)
 
 ;;; Helpers for GNUPG, which I use for encrypting/decrypting secrets.
