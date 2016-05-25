@@ -613,9 +613,12 @@ is the buffer location at which the function was found."
 (when (memq window-system '(mac ns))
   (setq ns-use-srgb-colorspace nil))
 
-(load-theme 'gruvbox)
+(setq selenized-use-more-italic t)
+(setq selenized-high-contrast-mode-line t)
+(setq selenized-distinct-fringe-background t)
+(load-theme 'selenized-medium)
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (if (file-readable-p custom-file)
     (load custom-file))
 
