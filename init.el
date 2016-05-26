@@ -126,6 +126,9 @@
   (add-hook 'css-mode-hook (lambda ()
                              (rainbow-mode))))
 
+(use-package clojure-mode :ensure t)
+(use-package cider :ensure t)
+
 (use-package wgrep
   :ensure t
   :config
